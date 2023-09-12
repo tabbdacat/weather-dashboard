@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,20 +8,60 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <link rel="stylesheet" type="text/css" href="./assets/style.css" />
 </head>
+
 <body>
-  <header>
-    <h1 class="title m-4 py-5">Weather!!</h1>
-  </header>
-  <nav class="columns m-3">
-    <div class="field is-grouped column is-one-third">
-        <p class="control is-expanded">
-            <input class="input" type="text" placeholder="Zip Code">
-        </p>
-        <p class="control">
-            <a class="button is-info">Search</a>
-        </p>
-    </div> 
-  </nav>
+    <header>
+        <h1 class="title m-4 py-5">Weather!!</h1>
+    </header>
+    <main class="columns is-mobile">>
+        <nav class="column is-one-quarter">
+            <div>
+                <p class="control is-expanded">
+                    <input class="input" type="text" placeholder="Enter City">
+                </p>
+                <p class="control">
+                    <a class="button is-info">Search</a>
+                </p>
+            </div>
+        </nav>
+        <div class="tile is-ancestor">
+            <div class="tile is-parent">
+              <article class="tile is-child box">
+                <p class="title">Day 1</p>
+                <p class="subtitle">What is up?</p>
+              </article>
+            </div>
+            <div class="tile is-parent">
+              <article class="tile is-child box">
+                <p class="title">Day 2</p>
+                <p class="subtitle">Bar</p>
+              </article>
+            </div>
+            <div class="tile is-parent">
+              <article class="tile is-child box">
+                <p class="title">Day 3</p>
+                <p class="subtitle">With some content</p>
+                <div class="content">
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.</p>
+                </div>
+              </article>
+            </div>
+            <div class="tile is-parent">
+                <article class="tile is-child box">
+                  <p class="title">Day 4</p>
+                  <p class="subtitle">Bar</p>
+                </article>
+              </div>
+              <div class="tile is-parent">
+                <article class="tile is-child box">
+                  <p class="title">Day 5</p>
+                  <p class="subtitle">Bar</p>
+                </article>
+              </div>
+          </div>
+    </main>
+
     <script src="./assets/script.js"></script>
 </body>
+
 </html>
