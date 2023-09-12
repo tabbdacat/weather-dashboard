@@ -4,13 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather Dashboard</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <link rel="stylesheet" type="text/css" href="./assets/style.css" />
 </head>
 <body>
   <header>
-Weather!!
+    <h1 class="title m-4 py-5">Weather!!</h1>
   </header>
-
+  <nav class="columns m-3">
+    <div class="field is-grouped column is-one-third">
+        <p class="control is-expanded">
+            <input class="input" type="text" placeholder="Zip Code">
+        </p>
+        <p class="control">
+            <a class="button is-info">Search</a>
+        </p>
+    </div> 
+  </nav>
     <script src="./assets/script.js"></script>
 </body>
 </html>
