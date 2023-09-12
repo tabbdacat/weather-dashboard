@@ -9,7 +9,14 @@ fetch(requestUrl)
       })
       .then(function (data) {
         console.log(data);
+        console.log(data.city.name);
+        console.log(data.list[0].wind.speed);
+        console.log(data.list[0].main.temp);
+        console.log(data.list[0].main.humidity);
+
+
     });
+
 }
 getApi();
 
