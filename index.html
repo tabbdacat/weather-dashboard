@@ -42,12 +42,17 @@
                 </div>
             </div>
         </div>
+        <section class="hide">
         <div class="columns is-mobile mx-5 is-justify-content-flex-end">
             <div class="tile is-ancestor">
                 <div class="tile is-parent">
                     <article class="tile is-child box">
                         <p class="title" id=" today">Today</p>
-                        <p class="subtitle">What is up?</p>
+                        <img class="my-1">
+                        <p class="subtitle my-1" id="day-two-temp"></p>
+                        <div class="content">
+                            <p class="my-0" id="day-two-humidity"></p>
+                            <p class="my-0" id="day-two-wind"></p>
                     </article>
                 </div>
                 <div class="tile is-parent">
@@ -78,6 +83,7 @@
                 </div>
             </div>
         </div>
+    </section>
     </main>
     <script
     src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"

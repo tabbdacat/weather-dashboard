@@ -15,7 +15,8 @@ fetch(requestUrl)
         console.log(data.list[0].main.humidity);
         console.log(data.list[0].dt_txt);
 
-
+        // let weatherDisplay = document.querySelectorAll(".hide");
+        // weatherDisplay.classList.remove("hide");
 
 let currentTempResponse = data.list[0].main.temp;
 let currentCity = data.city.name;
@@ -27,13 +28,27 @@ let icon = data.list[0].weather[0].icon;
 currentTemp.textContent = currentTempResponse;
 convertKelvinToFahrenheit(currentTempResponse);
 
-// let weatherIconData = data.list[0].weather[0].icon;
 weatherIcon[0].setAttribute("src", "https://openweathermap.org/img/wn/" + icon + "@2x.png");
 currentLocation.textContent = currentCity + ", " + currentCountry;
 currentHumidity.textContent = "Hum: " + currentHumidityData + "%";
 currentWind.textContent = "Wind: " + currentWindData + " mph";
-let weatherDisplay = document.querySelectorAll(".hide");
-weatherDisplay.classList.remove("hide");
+
+
+let dayTwoTempResponse = data.list[7].main.temp;
+let dayTwoHumidityData = data.list[7].main.humidity;
+let dayTwoWindData = data.list[7].wind.speed;
+let dayTwoicon = data.list[7].weather[0].icon;
+weatherIcon[1].setAttribute("src", "https://openweathermap.org/img/wn/" + dayTwoicon + "@2x.png");
+dayTwoHumidity.textContent = "Hum: " + dayTwoHumidityData + "%";
+dayTwoWind.textContent = "Wind: " + dayTwoWindData + " mph";
+
+dayTwoTemp.textContent = dayTwoTempResponse;
+convertKelvinToFahrenheit(dayTwoTempResponse);
+
+// weatherIcon[0].setAttribute("src", "https://openweathermap.org/img/wn/" + icon + "@2x.png");
+// currentLocation.textContent = currentCity + ", " + currentCountry;
+// currentHumidity.textContent = "Hum: " + currentHumidityData + "%";
+// currentWind.textContent = "Wind: " + currentWindData + " mph";
 
     });
 
@@ -56,6 +71,9 @@ let currentTemp = document.querySelector("#current-temp");
 let currentLocation = document.querySelector("#current-location");
 let currentHumidity = document.querySelector("#current-humidity");
 let currentWind = document.querySelector("#current-wind");
+let dayTwoTemp = document.querySelector("#day-two-temp");
+let dayTwoHumidity = document.querySelector("#day-two-humidity");
+let dayTwoWind = document.querySelector("#day-two-wind");
 
 // Source: https://codepen.io/CorbinMB/pen/OBXjMj
 function convertKelvinToFahrenheit(x) {
@@ -69,7 +87,8 @@ function convertKelvinToFahrenheit(x) {
     // Print to console.
     console.log(`The temperature is ${fahrenheit} degrees Fahrenheit.`);
 
-    currentTemp.textContent = fahrenheit + " degrees F";
+    currentTemp.textContent = fahrenheit + "° F";
+    dayTwoTemp.textContent = fahrenheit + "° F";
 }
 // function getGeocodeAPI() {
 //     let requestUrlTwo = 'http://api.openweathermap.org/geo/1.0/direct?q=Wahiawa,hi,us&appid=ef86c0944076d1643a343ec8b308ba52';
