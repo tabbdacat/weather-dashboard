@@ -1,6 +1,6 @@
 function getApi(city) {
     // var requestUrl = 'https://api.openweathermap.org/data/2.5/forecast?q=honolulu&appid=ef86c0944076d1643a343ec8b308ba52';
-var requestUrl = 'https://api.openweathermap.org/data/2.5/forecast?q=' + city + '&appid=ef86c0944076d1643a343ec8b308ba52';
+var requestUrl = 'https://api.openweathermap.org/data/2.5/forecast?q=' + city + '&units=imperial&appid=ef86c0944076d1643a343ec8b308ba52';
 
 
 fetch(requestUrl)
@@ -25,13 +25,12 @@ let currentHumidityData = data.list[0].main.humidity;
 let currentWindData = data.list[0].wind.speed;
 let icon = data.list[0].weather[0].icon;
 
-currentTemp.textContent = currentTempResponse;
-convertKelvinToFahrenheit(currentTempResponse);
 
 weatherIcon[0].setAttribute("src", "https://openweathermap.org/img/wn/" + icon + "@2x.png");
 currentLocation.textContent = currentCity + ", " + currentCountry;
 currentHumidity.textContent = "Hum: " + currentHumidityData + "%";
 currentWind.textContent = "Wind: " + currentWindData + " mph";
+currentTemp.textContent = Math.floor(currentTempResponse) + "° F";
 
 let dayOneTempResponse = data.list[7].main.temp;
 let dayOneHumidityData = data.list[7].main.humidity;
@@ -40,8 +39,7 @@ let dayOneicon = data.list[7].weather[0].icon;
 weatherIcon[1].setAttribute("src", "https://openweathermap.org/img/wn/" + dayOneicon + "@2x.png");
 dayOneHumidity.textContent = "Hum: " + dayOneHumidityData + "%";
 dayOneWind.textContent = "Wind: " + dayOneWindData + " mph";
-dayOneTemp.textContent = dayOneTempResponse;
-convertKelvinToFahrenheit(dayOneTempResponse);
+dayOneTemp.textContent = Math.floor(dayOneTempResponse) + "° F";
 
 
 let dayTwoTempResponse = data.list[15].main.temp;
@@ -51,8 +49,8 @@ let dayTwoicon = data.list[15].weather[0].icon;
 weatherIcon[2].setAttribute("src", "https://openweathermap.org/img/wn/" + dayTwoicon + "@2x.png");
 dayTwoHumidity.textContent = "Hum: " + dayTwoHumidityData + "%";
 dayTwoWind.textContent = "Wind: " + dayTwoWindData + " mph";
-dayTwoTemp.textContent = dayTwoTempResponse;
-convertKelvinToFahrenheit(dayTwoTempResponse);
+dayTwoTemp.textContent = Math.floor(dayTwoTempResponse) + "° F";
+
 
 let dayThreeTempResponse = data.list[23].main.temp;
 let dayThreeHumidityData = data.list[23].main.humidity;
@@ -61,8 +59,8 @@ let dayThreeicon = data.list[23].weather[0].icon;
 weatherIcon[3].setAttribute("src", "https://openweathermap.org/img/wn/" + dayThreeicon + "@2x.png");
 dayThreeHumidity.textContent = "Hum: " + dayThreeHumidityData + "%";
 dayThreeWind.textContent = "Wind: " + dayThreeWindData + " mph";
-dayThreeTemp.textContent = dayThreeTempResponse;
-convertKelvinToFahrenheit(dayThreeTempResponse);
+dayThreeTemp.textContent = Math.floor(dayThreeTempResponse) + "° F";
+
 
 let dayFourTempResponse = data.list[31].main.temp;
 let dayFourHumidityData = data.list[31].main.humidity;
@@ -71,8 +69,8 @@ let dayFouricon = data.list[31].weather[0].icon;
 weatherIcon[4].setAttribute("src", "https://openweathermap.org/img/wn/" + dayFouricon + "@2x.png");
 dayFourHumidity.textContent = "Hum: " + dayFourHumidityData + "%";
 dayFourWind.textContent = "Wind: " + dayFourWindData + " mph";
-dayFourTemp.textContent = dayFourTempResponse;
-convertKelvinToFahrenheit(dayFourTempResponse);
+dayFourTemp.textContent = Math.floor(dayFourTempResponse) + "° F";
+
 
 let dayFiveTempResponse = data.list[39].main.temp;
 let dayFiveHumidityData = data.list[39].main.humidity;
@@ -81,8 +79,7 @@ let dayFiveicon = data.list[39].weather[0].icon;
 weatherIcon[5].setAttribute("src", "https://openweathermap.org/img/wn/" + dayFiveicon + "@2x.png");
 dayFiveHumidity.textContent = "Hum: " + dayFiveHumidityData + "%";
 dayFiveWind.textContent = "Wind: " + dayFiveWindData + " mph";
-dayFiveTemp.textContent = dayFiveTempResponse;
-convertKelvinToFahrenheit(dayFiveTempResponse);
+dayFiveTemp.textContent = Math.floor(dayFiveTempResponse) + "° F";
 
 
 // weatherIcon[0].setAttribute("src", "https://openweathermap.org/img/wn/" + icon + "@2x.png");
@@ -127,25 +124,7 @@ let dayFiveTemp = document.querySelector("#day-five-temp");
 let dayFiveHumidity = document.querySelector("#day-five-humidity");
 let dayFiveWind = document.querySelector("#day-five-wind");
 
-// Source: https://codepen.io/CorbinMB/pen/OBXjMj
-function convertKelvinToFahrenheit(x) {
-    const kelvin = x;
-    // Converting kelvin to celsius by subtracting 273.
-    const celsius = kelvin - 273;
-    // Conversion to fahrenheit.
-    let fahrenheit = celsius * ( 9 / 5 ) + 32;
-    // This rounds the fahrenheit temparture.
-    fahrenheit = Math.floor(fahrenheit);
-    // Print to console.
-    console.log(`The temperature is ${fahrenheit} degrees Fahrenheit.`);
 
-    currentTemp.textContent = fahrenheit + "° F";
-    dayOneTemp.textContent = fahrenheit + "° F";
-    dayTwoTemp.textContent = fahrenheit + "° F";
-    dayThreeTemp.textContent = fahrenheit + "° F";
-    dayFourTemp.textContent = fahrenheit + "° F";
-    dayFiveTemp.textContent = fahrenheit + "° F";
-}
 // function getGeocodeAPI() {
 //     let requestUrlTwo = 'http://api.openweathermap.org/geo/1.0/direct?q=Wahiawa,hi,us&appid=ef86c0944076d1643a343ec8b308ba52';
 
