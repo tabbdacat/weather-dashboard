@@ -1,6 +1,4 @@
 function getApi(city) {
-    // var requestUrl = 'https://api.openweathermap.org/data/2.5/forecast?zip=96786,us&appid=ef86c0944076d1643a343ec8b308ba52';
-//       var requestUrl = 'https://api.openweathermap.org/data/2.5/forecast?id='+ cityId + '&appid=ef86c0944076d1643a343ec8b308ba52';
     // var requestUrl = 'https://api.openweathermap.org/data/2.5/forecast?q=honolulu&appid=ef86c0944076d1643a343ec8b308ba52';
 var requestUrl = 'https://api.openweathermap.org/data/2.5/forecast?q=' + city + '&appid=ef86c0944076d1643a343ec8b308ba52';
 
@@ -31,10 +29,11 @@ convertKelvinToFahrenheit(currentTempResponse);
 
 // let weatherIconData = data.list[0].weather[0].icon;
 weatherIcon[0].setAttribute("src", "https://openweathermap.org/img/wn/" + icon + "@2x.png");
-// '<img class="weather-icon" src="https://openweathermap.org/img/wn/" + icon + "@2x.png" alt="weather icon"/>'
 currentLocation.textContent = currentCity + ", " + currentCountry;
 currentHumidity.textContent = "Hum: " + currentHumidityData + "%";
 currentWind.textContent = "Wind: " + currentWindData + " mph";
+let weatherDisplay = document.querySelectorAll(".hide");
+weatherDisplay.classList.remove("hide");
 
     });
 
@@ -85,3 +84,13 @@ function convertKelvinToFahrenheit(x) {
 // }
 
 // getGeocodeAPI()
+
+// Adds code to display the current date 
+let $today = dayjs();
+console.log($today);
+$('#current-day').text($today.format('MMMM D, YYYY'));
+
+$('#day-two').text($today.add(1, 'day').format('M/D'));
+$('#day-three').text($today.add(2, 'day').format('M/D'));
+$('#day-four').text($today.add(3, 'day').format('M/D'));
+$('#day-five').text($today.add(4, 'day').format('M/D'));
