@@ -22,11 +22,19 @@ fetch(requestUrl)
 let currentTempResponse = data.list[0].main.temp;
 let currentCity = data.city.name;
 let currentCountry = data.city.country;
+let currentHumidityData = data.list[0].main.humidity;
+let currentWindData = data.list[0].wind.speed;
+let icon = data.list[0].weather[0].icon;
 
 currentTemp.textContent = currentTempResponse;
 convertKelvinToFahrenheit(currentTempResponse);
 
-currentLocation.textContent = currentCity + ", " + currentCountry
+// let weatherIconData = data.list[0].weather[0].icon;
+weatherIcon[0].setAttribute("src", "https://openweathermap.org/img/wn/" + icon + "@2x.png");
+// '<img class="weather-icon" src="https://openweathermap.org/img/wn/" + icon + "@2x.png" alt="weather icon"/>'
+currentLocation.textContent = currentCity + ", " + currentCountry;
+currentHumidity.textContent = "Hum: " + currentHumidityData + "%";
+currentWind.textContent = "Wind: " + currentWindData + " mph";
 
     });
 
@@ -44,9 +52,11 @@ searchBtn.addEventListener("click", function() {
   getApi(city);
 });
 
-
+let weatherIcon = document.querySelectorAll("img");
 let currentTemp = document.querySelector("#current-temp");
-let currentLocation = document.querySelector("#current-location")
+let currentLocation = document.querySelector("#current-location");
+let currentHumidity = document.querySelector("#current-humidity");
+let currentWind = document.querySelector("#current-wind");
 
 // Source: https://codepen.io/CorbinMB/pen/OBXjMj
 function convertKelvinToFahrenheit(x) {
