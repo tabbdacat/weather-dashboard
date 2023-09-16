@@ -11,7 +11,8 @@
 
 <body>
     <header>
-        <h1 class="title m-4 py-5">Weather!!</h1>
+        <h1 class="title ml-4 mt-4  py-2">Weather Dashboard</h1>
+        <img src="https://openweathermap.org/img/wn/10d@2x.png" alt="weather icon">
     </header>
     <main>
         <div class="columns is-mobile">
@@ -25,31 +26,33 @@
                     </p>
                 </div>
             </nav>
+
             <div class="tile is-ancestor is-7 m-5">
                 <div class="tile is-parent">
                     <article class="tile is-child box">
                         <p class="subtitle" id="current-day"></p>
-                        <p class="title" id="current-location"></p>
-                        <p class="subtitle hide">Current</p>
-                        <img>
-                        <p class="subtitle" id="current-temp"></p>
+                        <p class="title is-size-4" id="current-location"></p>
+                        <p class="subtitle hide my-1">Current</p>
+                        <img class="img  my-0">
+                        <p class="subtitle my-1" id="current-temp"></p>
                         <div class="content">
-                            <p class="my-2" id="current-humidity"></p>
-                            <p class="my-2" id="current-wind"></p>
+                            <p class="my-0" id="current-humidity"></p>
+                            <p class="my-0" id="current-wind"></p>
 
                         </div>
                     </article>
                 </div>
             </div>
         </div>
-        <section class="hide">
+ 
+        <section class="hide forecast">
         <div class="columns is-mobile mx-5 is-justify-content-flex-end">
             <div class="tile is-ancestor">
                 <div class="tile is-parent">
                     <article class="tile is-child box">
-                        <p class="title" id=" day-one">Day 1</p>
-                        <img class="my-1">
-                        <p class="subtitle my-1" id="day-one-temp"></p>
+                        <p class="title is-size-5 mb-0" id="day-one">Day 1</p>
+                        <img class="img my-0">
+                        <p class="subtitle my-0" id="day-one-temp"></p>
                         <div class="content">
                             <p class="my-0" id="day-one-humidity"></p>
                             <p class="my-0" id="day-one-wind"></p>
@@ -57,9 +60,9 @@
                 </div>
                 <div class="tile is-parent">
                     <article class="tile is-child box">
-                        <p class="title" id="day-two">Day 2</p>
-                        <img class="my-1">
-                        <p class="subtitle my-1" id="day-two-temp"></p>
+                        <p class="title is-size-5 mb-0" id="day-two">Day 2</p>
+                        <img class="img my-0">
+                        <p class="subtitle my-0" id="day-two-temp"></p>
                         <div class="content">
                             <p class="my-0" id="day-two-humidity"></p>
                             <p class="my-0" id="day-two-wind"></p>
@@ -67,9 +70,9 @@
                 </div>
                 <div class="tile is-parent">
                     <article class="tile is-child box">
-                        <p class="title" id="day-three">Day 3</p>
-                        <img class="my-1">
-                        <p class="subtitle my-1" id="day-three-temp"></p>
+                        <p class="title is-size-5 mb-0" id="day-three">Day 3</p>
+                        <img class="img my-0">
+                        <p class="subtitle my-0" id="day-three-temp"></p>
                         <div class="content">
                             <p class="my-0" id="day-three-humidity"></p>
                             <p class="my-0" id="day-three-wind"></p>
@@ -78,9 +81,9 @@
                 </div>
                 <div class="tile is-parent">
                     <article class="tile is-child box">
-                        <p class="title" id="day-four">Day 4</p>
-                        <img class="my-1">
-                        <p class="subtitle my-1" id="day-four-temp"></p>
+                        <p class="title is-size-5 mb-0" id="day-four">Day 4</p>
+                        <img class="img my-0">
+                        <p class="subtitle my-0" id="day-four-temp"></p>
                         <div class="content">
                             <p class="my-0" id="day-four-humidity"></p>
                             <p class="my-0" id="day-four-wind"></p>
@@ -88,9 +91,9 @@
                 </div>
                 <div class="tile is-parent">
                     <article class="tile is-child box">
-                        <p class="title" id="day-five">Day 5</p>
-                        <img class="my-1">
-                        <p class="subtitle my-1" id="day-five-temp"></p>
+                        <p class="title is-size-5 mb-0" id="day-five">Day 5</p>
+                        <img class="img my-0">
+                        <p class="subtitle my-0" id="day-five-temp"></p>
                         <div class="content">
                             <p class="my-0" id="day-five-humidity"></p>
                             <p class="my-0" id="day-five-wind"></p>

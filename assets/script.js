@@ -5,6 +5,11 @@ var requestUrl = 'https://api.openweathermap.org/data/2.5/forecast?q=' + city + 
 
 fetch(requestUrl)
       .then(function (response) {
+        // alert if fetch response not successful
+        if (response.status !== 200) {
+          alert("Data could not be found. Please try again.");
+          return null;
+        }
         return response.json();
       })
       .then(function (data) {
@@ -15,8 +20,7 @@ fetch(requestUrl)
         console.log(data.list[0].main.humidity);
         console.log(data.list[0].dt_txt);
 
-        // let weatherDisplay = document.querySelectorAll(".hide");
-        // weatherDisplay.classList.remove("hide");
+
 
 let currentTempResponse = data.list[0].main.temp;
 let currentCity = data.city.name;
@@ -29,8 +33,8 @@ let icon = data.list[0].weather[0].icon;
 weatherIcon[0].setAttribute("src", "https://openweathermap.org/img/wn/" + icon + "@2x.png");
 currentLocation.textContent = currentCity + ", " + currentCountry;
 currentHumidity.textContent = "Hum: " + currentHumidityData + "%";
-currentWind.textContent = "Wind: " + currentWindData + " mph";
-currentTemp.textContent = Math.floor(currentTempResponse) + "° F";
+currentWind.textContent = "Wind: " + Math.round(currentWindData) + " mph";
+currentTemp.textContent = Math.round(currentTempResponse) + "° F";
 
 let dayOneTempResponse = data.list[7].main.temp;
 let dayOneHumidityData = data.list[7].main.humidity;
@@ -38,8 +42,8 @@ let dayOneWindData = data.list[7].wind.speed;
 let dayOneicon = data.list[7].weather[0].icon;
 weatherIcon[1].setAttribute("src", "https://openweathermap.org/img/wn/" + dayOneicon + "@2x.png");
 dayOneHumidity.textContent = "Hum: " + dayOneHumidityData + "%";
-dayOneWind.textContent = "Wind: " + dayOneWindData + " mph";
-dayOneTemp.textContent = Math.floor(dayOneTempResponse) + "° F";
+dayOneWind.textContent = "Wind: " + Math.round(dayOneWindData) + " mph";
+dayOneTemp.textContent = Math.round(dayOneTempResponse) + "° F";
 
 
 let dayTwoTempResponse = data.list[15].main.temp;
@@ -48,8 +52,8 @@ let dayTwoWindData = data.list[15].wind.speed;
 let dayTwoicon = data.list[15].weather[0].icon;
 weatherIcon[2].setAttribute("src", "https://openweathermap.org/img/wn/" + dayTwoicon + "@2x.png");
 dayTwoHumidity.textContent = "Hum: " + dayTwoHumidityData + "%";
-dayTwoWind.textContent = "Wind: " + dayTwoWindData + " mph";
-dayTwoTemp.textContent = Math.floor(dayTwoTempResponse) + "° F";
+dayTwoWind.textContent = "Wind: " + Math.round(dayTwoWindData) + " mph";
+dayTwoTemp.textContent = Math.round(dayTwoTempResponse) + "° F";
 
 
 let dayThreeTempResponse = data.list[23].main.temp;
@@ -58,8 +62,8 @@ let dayThreeWindData = data.list[23].wind.speed;
 let dayThreeicon = data.list[23].weather[0].icon;
 weatherIcon[3].setAttribute("src", "https://openweathermap.org/img/wn/" + dayThreeicon + "@2x.png");
 dayThreeHumidity.textContent = "Hum: " + dayThreeHumidityData + "%";
-dayThreeWind.textContent = "Wind: " + dayThreeWindData + " mph";
-dayThreeTemp.textContent = Math.floor(dayThreeTempResponse) + "° F";
+dayThreeWind.textContent = "Wind: " + Math.round(dayThreeWindData) + " mph";
+dayThreeTemp.textContent = Math.round(dayThreeTempResponse) + "° F";
 
 
 let dayFourTempResponse = data.list[31].main.temp;
@@ -68,18 +72,19 @@ let dayFourWindData = data.list[31].wind.speed;
 let dayFouricon = data.list[31].weather[0].icon;
 weatherIcon[4].setAttribute("src", "https://openweathermap.org/img/wn/" + dayFouricon + "@2x.png");
 dayFourHumidity.textContent = "Hum: " + dayFourHumidityData + "%";
-dayFourWind.textContent = "Wind: " + dayFourWindData + " mph";
-dayFourTemp.textContent = Math.floor(dayFourTempResponse) + "° F";
+dayFourWind.textContent = "Wind: " + Math.round(dayFourWindData) + " mph";
+dayFourTemp.textContent = Math.round(dayFourTempResponse) + "° F";
 
 
 let dayFiveTempResponse = data.list[39].main.temp;
 let dayFiveHumidityData = data.list[39].main.humidity;
 let dayFiveWindData = data.list[39].wind.speed;
 let dayFiveicon = data.list[39].weather[0].icon;
+console.log(dayFiveicon);
 weatherIcon[5].setAttribute("src", "https://openweathermap.org/img/wn/" + dayFiveicon + "@2x.png");
 dayFiveHumidity.textContent = "Hum: " + dayFiveHumidityData + "%";
-dayFiveWind.textContent = "Wind: " + dayFiveWindData + " mph";
-dayFiveTemp.textContent = Math.floor(dayFiveTempResponse) + "° F";
+dayFiveWind.textContent = "Wind: " + Math.round(dayFiveWindData) + " mph";
+dayFiveTemp.textContent = Math.round(dayFiveTempResponse) + "° F";
 
 
 // weatherIcon[0].setAttribute("src", "https://openweathermap.org/img/wn/" + icon + "@2x.png");
@@ -99,11 +104,16 @@ searchBtn.addEventListener("click", function() {
   let city = cityInput.value.trim();
 
   console.log(city);
-
+  displayWeather();
   getApi(city);
 });
 
-let weatherIcon = document.querySelectorAll("img");
+function displayWeather() {
+let forecastBoxes = document.querySelector(".forecast");
+forecastBoxes.classList.remove("hide");
+}
+
+let weatherIcon = document.querySelectorAll(".img");
 let currentTemp = document.querySelector("#current-temp");
 let currentLocation = document.querySelector("#current-location");
 let currentHumidity = document.querySelector("#current-humidity");
@@ -143,8 +153,8 @@ let dayFiveWind = document.querySelector("#day-five-wind");
 let $today = dayjs();
 console.log($today);
 $('#current-day').text($today.format('MMMM D, YYYY'));
-
-$('#day-two').text($today.add(1, 'day').format('M/D'));
-$('#day-three').text($today.add(2, 'day').format('M/D'));
-$('#day-four').text($today.add(3, 'day').format('M/D'));
-$('#day-five').text($today.add(4, 'day').format('M/D'));
+$('#day-one').text($today.add(1, 'day').format('M/D'));
+$('#day-two').text($today.add(2, 'day').format('M/D'));
+$('#day-three').text($today.add(3, 'day').format('M/D'));
+$('#day-four').text($today.add(4, 'day').format('M/D'));
+$('#day-five').text($today.add(5, 'day').format('M/D'));
