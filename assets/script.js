@@ -115,13 +115,45 @@ function getApi(city) {
     });
 }
 
+
+let citySavedArray = [];
+
+function retrieveCity() {
+let storedCities = JSON.parse(localStorage.getItem("city"));
+if (storedCities !== null) {
+      citySavedArray = storedCities;
+    }
+}
+
 // Event listener uses city entered and calls functions
 searchBtn.addEventListener("click", function () {
-  let city = cityInput.value.trim();
-  
+      let city = cityInput.value.trim();
+    
   getApi(city);
   displayWeather();
+  storeCity(city);
+  retrieveCity();
+ cityInput.value = '';
 });
+
+function displayCitySaved() {
+  let cityHistory = document.querySelector("#city-history");
+
+  for (var i = 0; i < citySavedArray.length; i++) {
+      // the cities in iteration
+      cityHistory.innerHTML = citySavedArray[i];
+console.log(citySavedArray);
+//     cityHistory.innerHTML = "<option>" + cityHistory.innerHTML;
+//     cityHistory.querySelector("option").innerText = search;
+}
+}
+
+function storeCity(city) {
+      citySavedArray.push(city);
+  localStorage.setItem("city", JSON.stringify(citySavedArray));
+
+}
+displayCitySaved(); 
 
 // Makes 5 day forecast appear
 function displayWeather() {
@@ -141,3 +173,5 @@ $('#day-two').text($today.add(2, 'day').format('M/D'));
 $('#day-three').text($today.add(3, 'day').format('M/D'));
 $('#day-four').text($today.add(4, 'day').format('M/D'));
 $('#day-five').text($today.add(5, 'day').format('M/D'));
+
+retrieveCity();
