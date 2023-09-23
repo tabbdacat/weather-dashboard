@@ -7,7 +7,7 @@ function getApi(city) {
   // var requestUrl = 'https://api.openweathermap.org/data/2.5/forecast?q=honolulu&appid=ef86c0944076d1643a343ec8b308ba52';
   var requestUrl = 'https://api.openweathermap.org/data/2.5/forecast?q=' + city + '&units=imperial&appid=ef86c0944076d1643a343ec8b308ba52';
 
-
+// fetches info from weather API
   fetch(requestUrl)
     .then(function (response) {
       // alert if fetch response not successful
@@ -19,12 +19,6 @@ function getApi(city) {
       return response.json();
     })
     .then(function (data) {
-      console.log(data);
-      console.log(data.city.name);
-      console.log(data.list[0].wind.speed);
-      console.log(data.list[0].main.temp);
-      console.log(data.list[0].main.humidity);
-      console.log(data.list[0].dt_txt);
 
 // variables listed coordinating with HTML elements
       const weatherIcon = document.querySelectorAll(".img");
@@ -115,16 +109,6 @@ function getApi(city) {
     });
 }
 
-
-let citySavedArray = [];
-
-function retrieveCity() {
-let storedCities = JSON.parse(localStorage.getItem("city"));
-if (storedCities !== null) {
-      citySavedArray = storedCities;
-    }
-}
-
 // Event listener uses city entered and calls functions
 searchBtn.addEventListener("click", function () {
       let city = cityInput.value.trim();
@@ -132,28 +116,34 @@ searchBtn.addEventListener("click", function () {
   getApi(city);
   displayWeather();
   storeCity(city);
-  retrieveCity();
+  displayCitySaved();
  cityInput.value = '';
 });
 
+// displays previously displayed cities
 function displayCitySaved() {
-  let cityHistory = document.querySelector("#city-history");
-
-  for (var i = 0; i < citySavedArray.length; i++) {
+let cityHistory = $("#city-history");
+      cityHistory.html('');
+      for (var i = 0; i < citySavedArray.length; i++) {
       // the cities in iteration
-      cityHistory.innerHTML = citySavedArray[i];
-console.log(citySavedArray);
-//     cityHistory.innerHTML = "<option>" + cityHistory.innerHTML;
-//     cityHistory.querySelector("option").innerText = search;
+     const previousCity = $("<p>");
+     previousCity.text(citySavedArray[i]);
+     previousCity.on("click", function() {
+      console.log($(this).text());
+      getApi($(this).text());
+      displayWeather();
+     })
+     cityHistory.append(previousCity);
 }
 }
+// retrieves local storage items and places them into an array
+let citySavedArray = JSON.parse(localStorage.getItem("city")) || [];
 
+// stores array of cities as strings in local storage
 function storeCity(city) {
       citySavedArray.push(city);
   localStorage.setItem("city", JSON.stringify(citySavedArray));
-
 }
-displayCitySaved(); 
 
 // Makes 5 day forecast appear
 function displayWeather() {
@@ -174,4 +164,5 @@ $('#day-three').text($today.add(3, 'day').format('M/D'));
 $('#day-four').text($today.add(4, 'day').format('M/D'));
 $('#day-five').text($today.add(5, 'day').format('M/D'));
 
-retrieveCity();
+// calls upon function
+displayCitySaved(); 
