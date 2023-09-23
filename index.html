@@ -15,13 +15,14 @@
         <img src="https://openweathermap.org/img/wn/10d@2x.png" alt="weather icon">
         <div class="field has-addons is-justify-content-flex-start">
             <p class="is-flex control column is-5 pt-1">
-                <input class="input" id="city-input" type="text" name="city-input" placeholder="Enter City" />
+                <input class="input" id="city-input" type="text" name="city-input" placeholder="Enter City to Show Forecast" />
             </p>
             <p class="control pt-1">
                 <a class="button is-warning has-text-grey-dark mr-3" id="search-btn">Search</a>
             </p>
         </div>
     </header>
+    <!-- City history box -->
     <section>
         <div class="columns is-mobile m-2">
             <div class="tile is-ancestor is-4 m-2">
@@ -29,14 +30,14 @@
                     <article class="tile is-child box has-background-primary has-text-white-ter">
 
                         <div id="history-link">
-                            <h3 class="title is-size-4 m-4  has-text-white-ter">City History</h3>
+                            <h3 class="title is-size-4 my-3  has-text-white-ter">History</h3>
                         </div>
                         <div id="city-history">
                         </div>
                     </article>
                 </div>
             </div>
-
+<!-- current day box -->
             <div class="tile is-ancestor is-5 m-2">
                 <div class="tile is-parent">
                     <article class="tile is-child box has-background-primary has-text-white-ter">
@@ -55,10 +56,10 @@
                 </div>
             </div>
         </div>
-
         <div class="hide forecast">
             <div class="columns mx-5">
                 <div class="tile is-ancestor">
+                    <!-- 5 day forecast boxes -->
                     <div class="tile is-parent">
                         <article class="tile is-child box has-background-primary">
                             <p class="title is-size-5 mb-0  has-text-white-ter" id="day-one">Day 1</p>
